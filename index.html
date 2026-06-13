@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Helping Hand for NRI</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --saffron: #E8621A;
+    --saffron-light: #F5894E;
+    --cream: #FDF6EE;
+    --warm-brown: #3D2208;
+    --muted: #7A6050;
+    --card-bg: #FFF9F4;
+    --border: #F0D9C6;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--warm-brown);
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #3D2208 0%, #6B3A1F 60%, #E8621A 100%);
+    padding: 36px 32px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: rgba(232,98,26,0.18);
+    top: -80px; right: -60px;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    bottom: -60px; left: -40px;
+  }
+  .palm-icon { font-size: 52px; display: block; margin-bottom: 8px; }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 7vw, 44px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+  }
+  .hero h1 span { color: #FFB87A; }
+  .tagline {
+    margin-top: 8px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.78);
+    font-weight: 300;
+    line-height: 1.4;
+  }
+  .hero-badge {
+    display: inline-block;
+    margin-top: 12px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #FFD9B3;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 40px;
+  }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--saffron);
+    padding: 10px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* SECTION */
+  .section {
+    padding: 24px 24px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--warm-brown);
+    margin-bottom: 16px;
+    line-height: 1.3;
+  }
+
+  /* PHOTO TRUST STRIP */
+  .photo-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .photo-card {
+    border-radius: 14px;
+    overflow: hidden;
+    position: relative;
+  }
+  .photo-card img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    display: block;
+  }
+  .photo-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(61,34,8,0.85));
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 18px 8px 8px;
+    text-align: center;
+  }
+
+  /* SERVICES GRID */
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .service-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px 14px;
+  }
+  .service-icon { font-size: 26px; display: block; margin-bottom: 6px; }
+  .service-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .service-card p { font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0 24px; }
+
+  /* WHY ME */
+  .why-list { display: flex; flex-direction: column; gap: 10px; }
+  .why-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 12px;
+  }
+  .why-dot {
+    width: 36px; height: 36px; min-width: 36px;
+    background: linear-gradient(135deg, var(--saffron), var(--saffron-light));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+  }
+  .why-item p { font-size: 13.5px; line-height: 1.55; color: var(--warm-brown); }
+  .why-item strong { display: block; font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+
+  /* PRICING */
+  .pricing-section {
+    background: linear-gradient(135deg, #3D2208, #6B3A1F);
+    padding: 24px 24px;
+  }
+  .pricing-section .section-label { color: #FFB87A; text-align: center; }
+  .pricing-section .section-title { color: #fff; text-align: center; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  .price-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 16px;
+    padding: 20px 16px;
+    text-align: center;
+  }
+  .price-card.highlight {
+    background: var(--saffron);
+    border-color: var(--saffron-light);
+  }
+  .price-icon { font-size: 26px; margin-bottom: 8px; display: block; }
+  .price-card h3 { color: #fff; font-size: 13px; font-weight: 600; margin-bottom: 10px; }
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #FFB87A;
+    display: block;
+    margin-bottom: 4px;
+  }
+  .price-card.highlight .price-amount { color: #fff; }
+  .price-note { font-size: 11px; color: rgba(255,255,255,0.6); line-height: 1.4; }
+  .price-card.highlight .price-note { color: rgba(255,255,255,0.85); }
+
+  .pricing-promise {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pricing-promise span:first-child { font-size: 24px; }
+  .pricing-promise p { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.5; }
+  .pricing-promise strong { color: #FFB87A; }
+
+  /* COVERAGE */
+  .coverage-section {
+    background: linear-gradient(135deg, #FFF3E8, #FDE8D0);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 22px 24px;
+    text-align: center;
+  }
+  .coverage-section .section-label { text-align: center; }
+  .coverage-section .section-title { text-align: center; margin-bottom: 20px; }
+  .cities {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .city-pill {
+    background: #fff;
+    border: 1.5px solid var(--saffron);
+    color: var(--saffron);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 7px 18px;
+    border-radius: 40px;
+  }
+
+  /* CTA */
+  .cta-section {
+    background: var(--cream);
+    padding: 28px 24px 24px;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--warm-brown);
+    margin-bottom: 6px;
+  }
+  .cta-section > p {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 18px;
+  }
+  .contact-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 320px;
+    margin: 0 auto 14px;
+  }
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 24px;
+    border-radius: 50px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+  }
+  .btn-whatsapp { background: #25D366; color: #fff; }
+  .btn-call {
+    background: transparent;
+    color: var(--warm-brown);
+    border: 2px solid var(--border);
+  }
+  .contact-note { color: var(--muted); font-size: 12px; }
+
+  footer {
+    background: #2A1605;
+    padding: 12px 24px;
+    text-align: center;
+    color: rgba(255,255,255,0.35);
+    font-size: 11.5px;
+  }
+
+  @media (max-width: 420px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .photo-strip { grid-template-columns: 1fr 1fr; }
+    .photo-strip .photo-card:last-child { display: none; }
+    .trust-bar { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="palm-icon">🤝</span>
+  <h1>Helping Hand<br>for <span>NRI</span></h1>
+  <p class="tagline">Caring for your parents and property back home.</p>
+  <span class="hero-badge">Serving Tamil Nadu — Coimbatore Region</span>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span>✅</span> Trusted & Verified</div>
+  <div class="trust-item"><span>📍</span> Local & On-Ground</div>
+  <div class="trust-item"><span>🔒</span> Reliable & Discreet</div>
+</div>
+
+<!-- PHOTO TRUST STRIP + SERVICES -->
+<div class="section">
+  <p class="section-label">What I Do</p>
+  <h2 class="section-title">Your eyes and hands,<br>right here in Tamil Nadu.</h2>
+
+  <!-- Real photos to build visual trust -->
+  <div class="photo-strip">
+    <div class="photo-card">
+      <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80" alt="Hospital care" loading="lazy">
+      <div class="photo-label">Parent Care</div>
+    </div>
+    <div class="photo-card">
+      <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=400&q=80" alt="Property care" loading="lazy">
+      <div class="photo-label">Property Watch</div>
+    </div>
+    <div class="photo-card">
+      <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=400&q=80" alt="Maintenance" loading="lazy">
+      <div class="photo-label">Maintenance</div>
+    </div>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">🏥</span>
+      <h3>Parent Care</h3>
+      <p>Hospital visits, doctor appointments, check-ups, pharmacy pickups & follow-ups.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏠</span>
+      <h3>Property Watch</h3>
+      <p>Regular inspections, security checks and condition reporting with photos.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔧</span>
+      <h3>Maintenance</h3>
+      <p>Plumbing, electrical, painting — supervising repairs so you don't have to.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📋</span>
+      <h3>Document Help</h3>
+      <p>Govt. office visits, bill payments, paperwork assistance & follow-ups.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🚗</span>
+      <h3>Errand Support</h3>
+      <p>Accompanying parents to banks, temples, family events & daily errands.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🌾</span>
+      <h3>Farm Land Care</h3>
+      <p>Regular visits to check, monitor and report the condition of your land — with photo updates.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">📸</span>
+      <h3>Regular Updates</h3>
+      <p>Photos, videos & WhatsApp updates so you stay fully in the loop — always.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- WHY ME -->
+<div class="section">
+  <p class="section-label">Why Choose Me</p>
+  <h2 class="section-title">A person you can actually trust.</h2>
+  <div class="why-list">
+    <div class="why-item">
+      <div class="why-dot">🏡</div>
+      <p><strong>Truly Local</strong></p>
+    </div>
+    <div class="why-item">
+      <div class="why-dot">💬</div>
+      <p><strong>Always Reachable</strong></p>
+    </div>
+    <div class="why-item">
+      <div class="why-dot">❤️</div>
+      <p><strong>Treats Parents Like Family</strong><br>Patient, respectful and caring — your parents will feel looked after, not managed.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-dot">🔑</div>
+      <p><strong>One Point of Contact</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="pricing-section">
+  <p class="section-label">Transparent Pricing</p>
+  <h2 class="section-title" style="margin-bottom:24px;">Simple, honest rates.<br>No hidden charges.</h2>
+
+  <div style="max-width:400px; margin:0 auto 0;">
+    <div class="price-card highlight" style="padding:32px 24px;">
+      <span class="price-icon">⏱</span>
+      <h3 style="font-size:16px; margin-bottom:14px;">Our Rate</h3>
+      <span class="price-amount" style="font-size:32px;">₹1,000 / hour</span>
+      <p class="price-note" style="font-size:13px; margin-top:10px;">+ Travel charges &nbsp;·&nbsp; Minimum 2 hours</p>
+    </div>
+    <div style="margin-top:14px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.18); border-radius:14px; padding:16px 20px; text-align:center;">
+      <span style="font-size:22px; display:block; margin-bottom:8px;">📦</span>
+      <p style="color:#FFB87A; font-size:13px; font-weight:600; margin-bottom:4px;">Custom Monthly Packages</p>
+      <p style="color:rgba(255,255,255,0.75); font-size:12px; line-height:1.5;">Need regular support for your property or parents?<br>Reach out for affordable monthly packages tailored to your needs.</p>
+    </div>
+  </div>
+</div>
+
+<!-- COVERAGE -->
+<div class="coverage-section">
+  <p class="section-label">Service Area</p>
+  <h2 class="section-title">Covering your hometown,<br>wherever that may be.</h2>
+  <div class="cities">
+    <div class="city-pill">📍 Coimbatore</div>
+    <div class="city-pill">📍 Tiruppur</div>
+    <div class="city-pill">📍 Pollachi</div>
+    <div class="city-pill">📍 Udumalaipettai</div>
+    <div class="city-pill">📍 Erode</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Let's talk today.</h2>
+  <p>A quick WhatsApp is all it takes to get started.<br>No commitment — just a conversation.</p>
+  <div class="contact-buttons">
+    <a href="https://wa.me/917826088129" class="btn btn-whatsapp">
+      <span>💬</span> Chat on WhatsApp
+    </a>
+    <a href="tel:+917826088129" class="btn btn-call">
+      <span>📞</span> Call Me Directly
+    </a>
+  </div>
+</div>
+
+<footer>
+  © 2025 Helping Hand for NRI &nbsp;·&nbsp; Based in Tiruppur, Tamil Nadu &nbsp;·&nbsp; Serving the NRI Community with Heart
+</footer>
+
+</body>
+</html>
